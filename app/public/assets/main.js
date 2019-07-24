@@ -1,7 +1,7 @@
 $('#submit').on('click', function(event) {
    event.preventDefault();
 
-   var scoreRaw = $('.survey-score')
+   var scoreRaw = $('[name="score"]')
       .map(function() {
          return parseInt($(this).val());
       })
