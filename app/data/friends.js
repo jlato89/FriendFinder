@@ -1,7 +1,7 @@
 var friendsData = [
    {
       'name': 'Josh',
-      'photo': 'https://picsum.photos/',
+      'photo': 'https://picsum.photos/200',
       'scores': [
          5,
          1,
