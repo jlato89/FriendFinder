@@ -8,6 +8,7 @@ module.exports = function(app) {
    });
 
    app.post('/api/friends', function(req, res) {
-      // Callback Function
+      friends.push(req.body);
+      res.json(true);
    });
 };
