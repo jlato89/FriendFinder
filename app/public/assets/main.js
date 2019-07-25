@@ -1,23 +1,41 @@
 $('#submit').on('click', function(event) {
    event.preventDefault();
 
-   var scoreRaw = $('[name="score"]')
-      .map(function() {
-         return parseInt($(this).val());
-      })
-      .get();
+   var questionEmpty =
+      $('[name="score"]').filter(function() {
+         return $.trim(this.value).length === 0;
+      }).length > 0;
 
-      console.log('scoreRaw: '+ scoreRaw);
-   var scores = scoreRaw.map(Number);
+   var inputEmpty =
+      $(':input').filter(function() {
+         return $.trim(this.value).length === 0;
+      }).length > 0;
 
-   // Here we grab the form elements
-   var newFriend = {
-   name: $('#survey-name').val().trim(),
-   photo: $('#survey-photo').val().trim(),
-   scores: scores
-   };
+   if (questionEmpty || inputEmpty) {
+      console.log('Please fill out all questions.');
+   } else {
+      var scores = $('[name="score"]')
+         .map(function() {
+            return $(this).val();
+         })
+         .get();
 
-   console.log(newFriend);
+      // console.log('scoreRaw: ' + scoreRaw);
+      // var scores = scoreRaw.map(Number);
+
+      // Here we grab the form elements
+      var newFriend = {
+         name: $('#survey-name')
+            .val()
+            .trim(),
+         photo: $('#survey-photo')
+            .val()
+            .trim(),
+         scores: scores
+      };
+
+      console.log(newFriend);
+
+      // $.post('/api/friends', newFriend);
+   }
 });
-
-// $.post('/api/friends', newFriend);
