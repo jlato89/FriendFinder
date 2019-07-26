@@ -15,18 +15,16 @@ module.exports = app => {
 
    app.post('/api/friends', (req, res) => {
       var scores = req.body.scores.map(Number);
-      var scorePool = friends.scores;
-
-      if (!req.body.name || !req.body.photo || scores.length < 10) {
-         return res.status(400).json({ msg: 'Please fill out entire form' });
-         // res.json(false); //! unable to send false so main.js can run callback code. Need to find out why.
-      }
-
       var newFriend = {
          name: req.body.name,
          photo: req.body.photo,
          scores: scores
       };
+
+      if (!newFriend.name || !newFriend.photo || newFriend.scores.length < 10) {
+         return res.status(400).json({ msg: 'Please fill out entire form' });
+         // res.json(false); //! unable to send false so main.js can run callback code. Need to find out why.
+      }   
 
       var bestFriend = friendFinder(newFriend, friends);
 
@@ -37,6 +35,7 @@ module.exports = app => {
    });
 };
 
+//* FUNCTIONS
 function friendFinder(newFriend, friends, bestFriend) {
    // Find difference between scores and output them to an array
    var poolDifArray = [];
