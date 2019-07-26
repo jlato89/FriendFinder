@@ -15,6 +15,7 @@
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
+  text-align: center;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
@@ -36,13 +37,12 @@
   cursor: pointer;
 }
 
-#friend-result {
-  text-align: center;
-}
 .result-name {
   font-size: 3rem;
   text-decoration: underline;
+  margin-top: 0px;
 }
 .result-photo {
   border: 3px solid yellow;
+  max-width: 80%;
 }
