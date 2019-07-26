@@ -15,6 +15,7 @@ module.exports = app => {
 
    app.post('/api/friends', (req, res) => {
       var scores = req.body.scores.map(Number);
+      var scorePool = friends.scores;
 
       if (!req.body.name || !req.body.photo || scores.length < 10) {
          return res.status(400).json({ msg: 'Please fill out entire form' });
@@ -27,38 +28,44 @@ module.exports = app => {
          scores: scores
       };
 
-      // Find difference between scores and output them to an array
-      var poolDifArray = [];
-      for (let i = 0; i < friends.length; i++) {
-         var userScoreArray = newFriend.scores;
-         var poolScoreArray = friends[i].scores;
-         var poolDif = 0;
-         console.log('userScore: ' + userScoreArray);
-         console.log('poolScore: ' + poolScoreArray);
+      var bestFriend = friendFinder(newFriend, friends);
 
-         for (let i = 0; i < 10; i++) {
-            var userScore = userScoreArray[i];
-            var poolScore = poolScoreArray[i];
-            var diff = Math.abs(userScore - poolScore);
-            poolDif += diff;
-            // console.log('Diff: '+diff);
-         }
-         poolDifArray.push(poolDif);
-         console.log('poolDif: ' + poolDif);
-         console.log('----------');
-      }
-      console.log('poolDifArray: ' + poolDifArray);
-
-      // Determine who is the best match
-      var bestFriend = poolDifArray.reduce(
-         (iMin, x, i, arr) => (x < arr[iMin] ? i : iMin),
-         0
-      );
-
-      console.log('bestFriend: '+ bestFriend);
-
+      console.log('bestFriend: ' + bestFriend);
       friends.push(newFriend);
       res.json(friends);
       // res.json(true)
    });
 };
+
+function friendFinder(newFriend, friends, bestFriend) {
+   // Find difference between scores and output them to an array
+   var poolDifArray = [];
+   for (let i = 0; i < friends.length; i++) {
+      var userScoreArray = newFriend.scores;
+      var poolScoreArray = friends[i].scores;
+      var poolDif = 0;
+      console.log('userScore: ' + userScoreArray);
+      console.log('poolScore: ' + poolScoreArray);
+
+      for (let i = 0; i < 10; i++) {
+         var userScore = userScoreArray[i];
+         var poolScore = poolScoreArray[i];
+         var diff = Math.abs(userScore - poolScore);
+         poolDif += diff;
+         // console.log('Diff: '+diff);
+      }
+      poolDifArray.push(poolDif);
+      console.log('poolDif: ' + poolDif);
+      console.log('----------');
+   }
+   console.log('poolDifArray: ' + poolDifArray);
+
+   // Determine who is the best match
+   var bestFriend = poolDifArray.reduce(
+      (iMin, x, i, arr) => (x < arr[iMin] ? i : iMin),
+      0
+   );
+
+   // console.log('bestFriend: ' + bestFriend);
+   return bestFriend;
+}
