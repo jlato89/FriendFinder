@@ -1,5 +1,13 @@
 var friends = require('../data/friends');
 
+testFriend = [
+   {
+      name: 'joshy2',
+      photo: 'https://picsum.photos/200',
+      scores: [1, 2, 2, 1, 2, 1, 2, 1, 4, 1]
+   }
+];
+
 module.exports = app => {
    app.get('/api/friends', (req, res) => {
       res.json(friends);
@@ -19,7 +27,38 @@ module.exports = app => {
          scores: scores
       };
 
+      // Find difference between scores and output them to an array
+      var poolDifArray = [];
+      for (let i = 0; i < friends.length; i++) {
+         var userScoreArray = newFriend.scores;
+         var poolScoreArray = friends[i].scores;
+         var poolDif = 0;
+         console.log('userScore: ' + userScoreArray);
+         console.log('poolScore: ' + poolScoreArray);
+
+         for (let i = 0; i < 10; i++) {
+            var userScore = userScoreArray[i];
+            var poolScore = poolScoreArray[i];
+            var diff = Math.abs(userScore - poolScore);
+            poolDif += diff;
+            // console.log('Diff: '+diff);
+         }
+         poolDifArray.push(poolDif);
+         console.log('poolDif: ' + poolDif);
+         console.log('----------');
+      }
+      console.log('poolDifArray: ' + poolDifArray);
+
+      // Determine who is the best match
+      var bestFriend = poolDifArray.reduce(
+         (iMin, x, i, arr) => (x < arr[iMin] ? i : iMin),
+         0
+      );
+
+      console.log('bestFriend: '+ bestFriend);
+
       friends.push(newFriend);
       res.json(friends);
+      // res.json(true)
    });
 };
