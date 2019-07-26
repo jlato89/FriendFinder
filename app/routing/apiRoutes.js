@@ -30,7 +30,7 @@ module.exports = app => {
 
       console.log('bestFriend: ' + bestFriend);
       friends.push(newFriend);
-      res.json(friends);
+      res.json(friends[bestFriend]);
       // res.json(true)
    });
 };
