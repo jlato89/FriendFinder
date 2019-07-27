@@ -28,10 +28,6 @@ $('#submit').on('click', function(event) {
          var name = data.name;
          var photo = data.photo;
 
-         var closeBtn = $('<span>');
-         closeBtn.addClass('close');
-         closeBtn.html('&times;');
-
          var resultName = $('<h1>');
          resultName.addClass('result-name');
          resultName.text(name);
@@ -41,15 +37,11 @@ $('#submit').on('click', function(event) {
          resultImage.attr('src', photo);
 
          $('.error').empty();
-         $('.error').append(closeBtn, resultName, resultImage);
+         $('.error').append(resultName, resultImage);
          $('.modal').show();
       }
       //! Clear answers when done testing
    }).fail(function(err) {
-
-      var closeBtn = $('<span>');
-      closeBtn.addClass('close');
-      closeBtn.html('&times;');
 
       var formError = $('<h1>');
       formError.text(err.responseText);
