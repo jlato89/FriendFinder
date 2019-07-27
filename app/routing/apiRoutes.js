@@ -14,8 +14,7 @@ module.exports = app => {
       };
 
       if (!newFriend.name || !newFriend.photo || newFriend.scores.length < 10) {
-         return res.status(400).json({ msg: 'Please fill out entire form', success: false });
-         // return res.json(false);
+         return res.status(400).send('Please fill out entire form');
       }   
 
       var bestFriend = friendFinder(newFriend, friends);
