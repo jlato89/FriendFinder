@@ -65,22 +65,20 @@ $('.close').on('click', function() {
 })
 
 // Get the modal
-// var modal = document.getElementById('myModal');
-
-// Get the <span> element that closes the modal
-// var span = document.getElementsByClassName('close')[0];
+var modal = document.getElementById('myModal');
 
 // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//    if (event.target == modal) {
-//       modal.style.display = 'none';
-//    }
-// };
+window.onclick = function(event) {
+   if (event.target == modal) {
+      modal.style.display = 'none';
+   }
+};
 
+//! COULDNT GET THE BELOW CODE TO WORK, SO WENT WITH PLAIN JS ABOVE
 // $(window).on('click', function(event) {
-//    var modal = $(event.target).attr('myModal');
-//    console.log(event.target);
-//    if (event.target == modal) {
+//    var target = $('#myModal')
+//    if (target.hasId('myModal')) {
+//       console.log('recieved click');
 //       $('#myModal').hide
 //    }
 // })
