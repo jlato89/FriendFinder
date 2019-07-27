@@ -1,13 +1,5 @@
 var friends = require('../data/friends');
 
-testFriend = [
-   {
-      name: 'joshy2',
-      photo: 'https://picsum.photos/200',
-      scores: [1, 2, 2, 1, 2, 1, 2, 1, 4, 1]
-   }
-];
-
 module.exports = app => {
    app.get('/api/friends', (req, res) => {
       res.json(friends);
@@ -22,13 +14,13 @@ module.exports = app => {
       };
 
       if (!newFriend.name || !newFriend.photo || newFriend.scores.length < 10) {
-         return res.status(400).json({ msg: 'Please fill out entire form' });
-         // res.json(false); //! unable to send false so main.js can run callback code. Need to find out why.
+         return res.status(400).json({ msg: 'Please fill out entire form', success: false });
+         // return res.json(false);
       }   
 
       var bestFriend = friendFinder(newFriend, friends);
 
-      console.log('bestFriend: ' + bestFriend);
+      // console.log('bestFriend: ' + bestFriend);
       friends.push(newFriend);
       res.json(friends[bestFriend]);
       // res.json(true)
@@ -43,8 +35,8 @@ function friendFinder(newFriend, friends, bestFriend) {
       var userScoreArray = newFriend.scores;
       var poolScoreArray = friends[i].scores;
       var poolDif = 0;
-      console.log('userScore: ' + userScoreArray);
-      console.log('poolScore: ' + poolScoreArray);
+      // console.log('userScore: ' + userScoreArray);
+      // console.log('poolScore: ' + poolScoreArray);
 
       for (let i = 0; i < 10; i++) {
          var userScore = userScoreArray[i];
@@ -54,10 +46,10 @@ function friendFinder(newFriend, friends, bestFriend) {
          // console.log('Diff: '+diff);
       }
       poolDifArray.push(poolDif);
-      console.log('poolDif: ' + poolDif);
-      console.log('----------');
+      // console.log('poolDif: ' + poolDif);
+      // console.log('----------');
    }
-   console.log('poolDifArray: ' + poolDifArray);
+   // console.log('poolDifArray: ' + poolDifArray);
 
    // Determine who is the best match
    var bestFriend = poolDifArray.reduce(
