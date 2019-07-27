@@ -20,6 +20,7 @@ $('#submit').on('click', function(event) {
 
    console.log(newFriend);
 
+   // post array to apiRoutes and wait for callback
    $.post('/api/friends', newFriend, function(data) {
       console.log(data);
 
@@ -39,13 +40,13 @@ $('#submit').on('click', function(event) {
          resultImage.addClass('result-image');
          resultImage.attr('src', photo);
 
-         $('.modal-content').empty();
-         $('.modal-content').append(closeBtn, resultName, resultImage);
+         $('.error').empty();
+         $('.error').append(closeBtn, resultName, resultImage);
          $('.modal').show();
       }
       //! Clear answers when done testing
    }).fail(function(err) {
-      console.log(err);
+
       var closeBtn = $('<span>');
       closeBtn.addClass('close');
       closeBtn.html('&times;');
@@ -53,34 +54,33 @@ $('#submit').on('click', function(event) {
       var formError = $('<h1>');
       formError.text(err.responseText);
 
-      $('.modal-content').empty();
-      $('.modal-content').append(closeBtn, formError);
+      $('.error').html(formError);
       $('.modal').show();
    });
 });
 
-// Get the modal
-var modal = document.getElementById('myModal');
+// Close popup modal
+$('.close').on('click', function() {
+   $('#myModal').hide();
+})
 
-// Get the button that opens the modal
-var btn = document.getElementById('myBtn');
+// Get the modal
+// var modal = document.getElementById('myModal');
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName('close')[0];
-
-// When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//    modal.style.display = 'block';
-// };
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-   modal.style.display = 'none';
-};
+// var span = document.getElementsByClassName('close')[0];
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-   if (event.target == modal) {
-      modal.style.display = 'none';
-   }
-};
+// window.onclick = function(event) {
+//    if (event.target == modal) {
+//       modal.style.display = 'none';
+//    }
+// };
+
+// $(window).on('click', function(event) {
+//    var modal = $(event.target).attr('myModal');
+//    console.log(event.target);
+//    if (event.target == modal) {
+//       $('#myModal').hide
+//    }
+// })
