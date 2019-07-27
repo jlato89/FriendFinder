@@ -21,21 +21,20 @@ $('#submit').on('click', function(event) {
    console.log(newFriend);
 
    $.post('/api/friends', newFriend, function(data) {
+      console.log(data);
+
       if (!data) {
          var closeBtn = $('<span>');
          closeBtn.addClass('close');
          closeBtn.html('&times;');
 
-         var error = $('<h1>');
-         error.text('Please go back and fill out entire form');
+         var formError = $('<h1>');
+         formError.text('Please go back and fill out entire form');
 
          $('.modal-content').empty();
          $('.modal-content').append(closeBtn, formError);
          $('.modal').show();
-
       } else {
-         console.log('DATA: '+ data);
-         //! Display modal here
          var name = data.name;
          var photo = data.photo;
 
@@ -49,7 +48,7 @@ $('#submit').on('click', function(event) {
 
          var resultImage = $('<img>');
          resultImage.addClass('result-image');
-         resultImage.attr("src", photo);
+         resultImage.attr('src', photo);
 
          $('.modal-content').empty();
          $('.modal-content').append(closeBtn, resultName, resultImage);
