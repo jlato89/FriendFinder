@@ -23,18 +23,7 @@ $('#submit').on('click', function(event) {
    $.post('/api/friends', newFriend, function(data) {
       console.log(data);
 
-      if (!data) {
-         var closeBtn = $('<span>');
-         closeBtn.addClass('close');
-         closeBtn.html('&times;');
-
-         var formError = $('<h1>');
-         formError.text('Please go back and fill out entire form');
-
-         $('.modal-content').empty();
-         $('.modal-content').append(closeBtn, formError);
-         $('.modal').show();
-      } else {
+      if (data) {
          var name = data.name;
          var photo = data.photo;
 
@@ -55,6 +44,18 @@ $('#submit').on('click', function(event) {
          $('.modal').show();
       }
       //! Clear answers when done testing
+   }).fail(function(err) {
+      console.log(err);
+      var closeBtn = $('<span>');
+      closeBtn.addClass('close');
+      closeBtn.html('&times;');
+
+      var formError = $('<h1>');
+      formError.text(err.responseText);
+
+      $('.modal-content').empty();
+      $('.modal-content').append(closeBtn, formError);
+      $('.modal').show();
    });
 });
 
