@@ -18,11 +18,11 @@ $('#submit').on('click', function(event) {
       scores: scores
    };
 
-   console.log(newFriend);
+   // console.log(newFriend);
 
    // post array to apiRoutes and wait for callback
    $.post('/api/friends', newFriend, function(data) {
-      console.log(data);
+      // console.log(data);
 
       if (data) {
          var name = data.name;
