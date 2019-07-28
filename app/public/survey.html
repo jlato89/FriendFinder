@@ -19,21 +19,23 @@
       </div>
    </div>
 
+   <main>
    <!-- Survey -->
    <h1>Survey Questions</h1>
    <hr>
 
-
-   <h2>About You</h2>
-   <p>Name (Required)</p>
-   <input type="text" name="name" id="survey-name">
-   <p>Link to photo image (Required)</p>
-   <input type="text" name="photo" id="survey-photo">
+   <div class="about-you">
+      <h2>About You</h2>
+      <p class="q-text">Name (Required)</p>
+      <input type="text" name="name" id="survey-name">
+      <p class="q-text">Link to photo image (Required)</p>
+      <input type="text" name="photo" id="survey-photo">
+   </div>
    <hr>
 
    <form action="" method="dialog">
       <h2>Question 1</h2>
-      <p>Your mind is always buzzing with unexplored ideas and plans.</p>
+      <p class="q-text">Your mind is always buzzing with unexplored ideas and plans.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -43,7 +45,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 2</h2>
-      <p>Generally speaking, you rely more on your experience than your imagination.</p>
+      <p class="q-text">Generally speaking, you rely more on your experience than your imagination.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -53,7 +55,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 3</h2>
-      <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
+      <p class="q-text">You find it easy to stay relaxed and focused even when there is some pressure.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -63,7 +65,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 4</h2>
-      <p>You rarely do something just out of sheer curiosity.</p>
+      <p class="q-text">You rarely do something just out of sheer curiosity.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -73,7 +75,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 5</h2>
-      <p>People can rarely upset you.</p>
+      <p class="q-text">People can rarely upset you.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -83,7 +85,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 6</h2>
-      <p>It is often difficult for you to relate to other people’s feelings.</p>
+      <p class="q-text">It is often difficult for you to relate to other people’s feelings.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -93,7 +95,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 7</h2>
-      <p>In a discussion, truth should be more important than people’s sensitivities.</p>
+      <p class="q-text">In a discussion, truth should be more important than people’s sensitivities.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -103,7 +105,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 8</h2>
-      <p>You rarely get carried away by fantasies and ideas.</p>
+      <p class="q-text">You rarely get carried away by fantasies and ideas.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -113,7 +115,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 9</h2>
-      <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
+      <p class="q-text">You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
       </p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
@@ -124,7 +126,7 @@
          <option value="5">5 (Strongly Agree)</option>
       </select>
       <h2>Question 10</h2>
-      <p>You feel more energetic after spending time with a group of people.</p>
+      <p class="q-text">You feel more energetic after spending time with a group of people.</p>
       <select name="score">
          <option value="" disabled selected>Select an Option</option>
          <option value="1">1 (Strongly Disagree)</option>
@@ -135,14 +137,19 @@
       </select>
    </form>
 
-   <br><br>
-
    <button type="submit" id="submit">Submit</button>
 
-   <br><br>
-
-
-   <p class="sm-text"><a href="/api/friends">API Friends List</a></a></p>
+   <hr>
+   </main>
+   
+   <footer>
+      <p>
+         <a href="/api/friends">
+            API Friends List</a> |
+         <a href="https://github.com/jlato89/FriendFinder">
+            GitHub Repo</a>
+      </p>
+   </footer>
 
    <script src="assets/main.js"></script>
 </body>
