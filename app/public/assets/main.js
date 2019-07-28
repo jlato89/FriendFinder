@@ -40,7 +40,6 @@ $('#submit').on('click', function(event) {
          $('.error').append(resultName, resultImage);
          $('.modal').show();
       }
-      //! Clear answers when done testing
    }).fail(function(err) {
 
       var formError = $('<h1>');
