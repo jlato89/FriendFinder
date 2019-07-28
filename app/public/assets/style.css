@@ -44,16 +44,37 @@ footer a:hover {
 /* ========================================================================== */
 /* Survey Page */
 /* ========================================================================== */
-.result-name {
-  font-size: 3rem;
-  text-decoration: underline;
-  margin-top: 0px;
+.about-you {
+  margin: 1rem 0 ;
 }
-.result-photo {
-  border: 3px solid yellow;
-  max-width: 80%;
+h2 {
+  font-size: 1.7em;
+  margin: 0.7rem 0;
+  margin-top: 1rem;
 }
-
+.q-text {
+  margin: .7rem 0;
+  font-size: 1.2rem;
+}
+select {
+  padding: .3rem;
+}
+#submit {
+  width: 100%;
+  background: #5454e7;
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding: .8rem;
+  margin: 1rem 0;
+}
+#submit:hover {
+  cursor: pointer;
+  background: #3333ce;
+}
+hr {
+  opacity: .3;
+}
 /* ========================================================================== */
 /* Modal Display */
 /* ========================================================================== */
@@ -93,4 +114,14 @@ footer a:hover {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.result-name {
+  font-size: 3rem;
+  text-decoration: underline;
+  margin-top: 0px;
+}
+.result-photo {
+  border: 3px solid yellow;
+  max-width: 80%;
 }
